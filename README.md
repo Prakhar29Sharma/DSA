@@ -18,7 +18,7 @@ This program takes an integer input and tells if given number is fibb number or 
 This program takes height of the triangle and displays pascals triangle using array
 
 ## StackArr.c ##
-Stack Implementation using array
+Stack Implementation using array, 
 contains - push, pop, show, isEmpty function
 
 ## PostFixEval.c ##
