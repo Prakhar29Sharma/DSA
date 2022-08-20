@@ -27,3 +27,6 @@ This program takes a postfix expression from user and evaluate it using stack an
 ## InfixToPostfix.c ##
 This program takes an infix expression and converts it into a postfix expression 
 
+## NormalQueueImplementation.c ##
+Normal Queue Implementation using array,
+contains - enqueue, dequeue, isEmpty, show functions
