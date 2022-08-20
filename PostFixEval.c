@@ -7,8 +7,6 @@ int j = -1;
 
 void push(int);
 int pop();
-void show();
-void isEmpty();
 int eval(char exp[]);
 
 int main()
@@ -90,22 +88,3 @@ int pop()
     }
 }
 
-void show()
-{
-	int i;
-    for(i = size-1; i >= 0 ; i--)
-    {
-        printf("\n%d", stack[i]);
-    }
-    return;
-}
-
-void isEmpty()
-{
-    if (j == -1)
-    {
-        printf("\nStack is Empty!");
-    } else {
-        printf("\nStack is not Empty!");
-    }
-}
