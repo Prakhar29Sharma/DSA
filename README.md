@@ -23,3 +23,7 @@ contains - push, pop, show, isEmpty function
 
 ## PostFixEval.c ##
 This program takes a postfix expression from user and evaluate it using stack and displays result
+
+## InfixToPostfix.c ##
+This program takes an infix expression and converts it into a postfix expression 
+
