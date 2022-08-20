@@ -13,7 +13,9 @@ int eval(char exp[]);
 
 int main()
 {
-    char exp[] = "231*+9-";
+    char exp[100];
+    printf("Enter a PostFix Expression : ");
+    scanf("%s", exp);
     int result;
     result = eval(exp);
     printf("result : %d\n", result);
