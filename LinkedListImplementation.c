@@ -19,6 +19,42 @@ void freenode(struct node *p)
 	free(p);
 }
 
+void delete(int pos)
+{
+	if(list == NULL)
+	{
+		printf("List is Empty!\n");
+	}
+	else
+	{
+		struct node *temp1 = list;
+		if(pos == 1)
+		{
+			list = list->next;
+			free(temp1);
+			return;
+		}
+		else
+		{
+			struct node *temp2;
+			temp2 = list;
+			int count;
+			count = 1;
+			while(temp1->next!=NULL)
+			{
+				if(count == pos-1)
+				{
+					temp2=temp2->next;
+					temp1->next = temp2->next;
+				}
+				count++;
+				temp1=temp1->next;
+				temp2=temp2->next;
+			}
+		}
+	}
+}
+
 void insertbeg(int x)
 {
 	struct node *nn;
@@ -113,6 +149,8 @@ int main()
 	insertend(1);
 	display();
 	insert(2,8);
+	display();
+	delete(2);
 	display();
 	return 0;
 }
