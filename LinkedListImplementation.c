@@ -19,9 +19,73 @@ void freenode(struct node *p)
 	free(p);
 }
 
+void insertbeg(int x)
+{
+	struct node *nn;
+	nn = getnode();
+	nn->info = x;
+	nn->next = list;
+	list = nn;
+}
+
+void insertend(int x)
+{
+	struct node *nn, *temp;
+	nn = getnode();
+	nn->info = x;
+	nn->next = NULL;
+	temp = list;
+	while(temp->next!=NULL)
+	{
+		temp = temp->next;
+	}
+	temp->next = nn;
+}
+
+void insert(int pos, int val)
+{
+	
+	if(list == NULL)
+	{
+		char ch;
+		printf("List is Empty!\n");
+		printf("Do you want to add element at first position ? ");
+		scanf("%c", &ch);
+		if(ch == 'y' || ch == 'Y')
+		{
+			insertbeg(val);
+		}
+		else
+		{
+			return;
+		}
+	}
+	else
+	{
+		int count = 1;
+		struct node *nn, *t;
+		t = list;
+		
+		while(t->next!=NULL)
+		{
+
+			if(count == pos-1)
+			{
+				nn = getnode();
+				nn->info = val;
+				nn->next = t->next;
+				t->next = nn;
+				break;
+			}
+			t=t->next;
+			count++;
+		}
+	}
+
+}
+
 void display()
 {
-	int i;
 	struct node *t;
 	t = list;
 	if(t == NULL)
@@ -33,91 +97,22 @@ void display()
 		while(t!=NULL)
 		{
 			printf("%d ", t->info);
-			t=t->next;
+			t = t->next;
 		}
 	}
-}
-
-
-void insertbeg(int x)
-{
-	struct node *nn;
-	nn = getnode();
-	nn->info = x;
-	nn->next = list;
-	list = nn;
-	display();
-}
-
-void insertend(int x)
-{
-	struct node *nn, *temp;
-	nn = getnode();
-	nn->info = x;
-	nn->next = NULL;
-	temp = list;
-	if(temp == NULL)
-	{
-		list = nn;
-	}
-	else
-	{
-		while(temp->next!=NULL)
-		{
-			temp = temp->next;
-		}
-		temp->next = nn;
-	}
-	freenode(temp);
-	display();
-}
-
-
-void insert(int p, int x)
-{
-	if(list == NULL)
-	{	
-		char ch;
-		printf("List is Empty!\n");
-		printf("Do you want to add first element ? ");
-		scanf("%c", &ch);
-		if(ch == 'y')
-		{
-			insertbeg(x);
-		}
-		else
-		{
-			return;
-		}
-	}
-	else
-	{
-		int count;
-		count = 1;
-		struct node *temp, *nn;
-		temp = list;
-		while(temp->next!=NULL)
-		{
-			temp = temp->next;
-			count++;
-			if(count == p-1)
-			{
-				nn = getnode();
-				nn->info = x;
-				nn->next = temp->next;
-				temp->next = nn;
-			}
-		}
-		display();
-	}
+	printf("\n");
 }
 
 int main()
 {
 	display();
-	insertbeg(4);
+	insertbeg(3);
 	insertbeg(5);
-	insertend(2);
-	insert(2,1);
+	insertbeg(2);
+	display();
+	insertend(1);
+	display();
+	insert(2,8);
+	display();
 	return 0;
 }
