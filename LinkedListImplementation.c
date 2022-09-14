@@ -19,6 +19,40 @@ void freenode(struct node *p)
 	free(p);
 }
 
+
+void deletebeg()
+{
+	if(list == NULL)
+	{
+		printf("List is Empty!\n");
+		return;
+	}
+	struct node *temp = list;
+	list = temp->next;
+	freenode(temp);
+	return;
+}
+
+void deleteend()
+{
+	if(list == NULL)
+	{
+		printf("List is Empty!\n");
+		return;
+	}
+	struct node *temp, *prevtemp;
+	temp = list;
+	while(temp->next!=NULL)
+	{
+		prevtemp = temp;
+		temp=temp->next;
+	}
+	prevtemp->next = NULL;
+	freenode(temp);
+	return;
+}
+
+
 void delete(int pos)
 {
 	if(list == NULL)
@@ -31,7 +65,7 @@ void delete(int pos)
 		if(pos == 1)
 		{
 			list = list->next;
-			free(temp1);
+			freenode(temp1);
 			return;
 		}
 		else
@@ -50,6 +84,10 @@ void delete(int pos)
 				count++;
 				temp1=temp1->next;
 				temp2=temp2->next;
+			}
+			if(count < p)
+			{
+				printf("There are less elements!\n");
 			}
 		}
 	}
