@@ -192,7 +192,22 @@ void get_length()
 }
 
 
-
+void search(int target)
+{
+	struct node *temp;
+	temp = list;
+	while(temp->next!=NULL)
+	{
+		if(temp->info == target)
+		{
+			printf("Found!\n");
+			return;
+		}
+		temp = temp->next;
+	}
+	printf("Not Found!\n");
+	return;
+}
 
 
 int main()
@@ -201,6 +216,7 @@ int main()
 	insertbeg(3);
 	insertbeg(5);
 	insertbeg(2);
+	search(5);
 	display();
 	insertend(1);
 	display();
@@ -209,5 +225,7 @@ int main()
 	delete(2);
 	display();
 	get_length();
+	search(10);
+
 	return 0;
 }
