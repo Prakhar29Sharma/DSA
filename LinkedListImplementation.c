@@ -19,7 +19,6 @@ void freenode(struct node *p)
 	free(p);
 }
 
-
 void deletebeg()
 {
 	if(list == NULL)
@@ -177,6 +176,23 @@ void display()
 	printf("\n");
 }
 
+void get_length()
+{
+	struct node *temp;
+	int length;
+	length = 0;
+	temp = list;
+	while(temp!=NULL)
+	{
+		length++;
+		temp = temp->next;
+	}
+	printf("length of list is %d\n", length);
+	return;
+}
+
+
+
 int main()
 {
 	display();
@@ -190,5 +206,6 @@ int main()
 	display();
 	delete(2);
 	display();
+	get_length();
 	return 0;
 }
