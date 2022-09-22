@@ -11,12 +11,7 @@ struct node *list = NULL;
 
 struct node* getnode()
 {
-	return ((struct node*)malloc(sizeof(struct node)));
-}
-
-void freenode(struct node *p)
-{
-	free(p);
+	return (struct node*)malloc(sizeof(struct node));
 }
 
 void push(int x)
@@ -24,6 +19,7 @@ void push(int x)
 	if(list == NULL)
 	{
 		struct node *nn;
+		nn = getnode();
 		nn->info = x;
 		nn->next = NULL;
 		list = nn;
@@ -32,6 +28,7 @@ void push(int x)
 	else
 	{
 		struct node *nn, *temp;
+		nn = getnode();
 		temp = list;
 		nn->info = x;
 		nn->next = NULL;
@@ -47,7 +44,7 @@ void pop()
 {
 	if(list == NULL)
 	{
-		printf("List is Empty!\n");
+		printf("Stack is Empty!\n");
 	}
 	else
 	{
@@ -56,11 +53,10 @@ void pop()
 		while(temp->next!=NULL)
 		{
 			prev = temp;
-			prev->next = NULL;
 			temp = temp->next;
-			freenode(temp);
-			printf("%d got popped!\n",prev->info);
 		}
+		prev->next = NULL;
+		printf("%d got popped!\n",temp->info);
 	}
 }
 
@@ -74,7 +70,7 @@ void show()
 	{
 		struct node *temp;
 		temp = list;
-		while(temp->next!=NULL)
+		while(temp!=NULL)
 		{
 			printf("%d\n", temp->info);
 			temp = temp->next;
