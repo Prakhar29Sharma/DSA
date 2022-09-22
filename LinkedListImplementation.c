@@ -84,7 +84,7 @@ void delete(int pos)
 				temp1=temp1->next;
 				temp2=temp2->next;
 			}
-			if(count < p)
+			if(count < pos)
 			{
 				printf("There are less elements!\n");
 			}
@@ -190,6 +190,8 @@ void get_length()
 	printf("length of list is %d\n", length);
 	return;
 }
+
+
 
 
 
