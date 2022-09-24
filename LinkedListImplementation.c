@@ -19,7 +19,6 @@ void freenode(struct node *p)
 	free(p);
 }
 
-
 void deletebeg()
 {
 	if(list == NULL)
@@ -85,7 +84,7 @@ void delete(int pos)
 				temp1=temp1->next;
 				temp2=temp2->next;
 			}
-			if(count < p)
+			if(count < pos)
 			{
 				printf("There are less elements!\n");
 			}
@@ -177,12 +176,47 @@ void display()
 	printf("\n");
 }
 
+void get_length()
+{
+	struct node *temp;
+	int length;
+	length = 0;
+	temp = list;
+	while(temp!=NULL)
+	{
+		length++;
+		temp = temp->next;
+	}
+	printf("length of list is %d\n", length);
+	return;
+}
+
+
+void search(int target)
+{
+	struct node *temp;
+	temp = list;
+	while(temp->next!=NULL)
+	{
+		if(temp->info == target)
+		{
+			printf("Found!\n");
+			return;
+		}
+		temp = temp->next;
+	}
+	printf("Not Found!\n");
+	return;
+}
+
+
 int main()
 {
 	display();
 	insertbeg(3);
 	insertbeg(5);
 	insertbeg(2);
+	search(5);
 	display();
 	insertend(1);
 	display();
@@ -190,5 +224,8 @@ int main()
 	display();
 	delete(2);
 	display();
+	get_length();
+	search(10);
+
 	return 0;
 }
