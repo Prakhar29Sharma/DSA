@@ -37,6 +37,7 @@ int main()
         {
             postfix[++j] = infix[i];
         } else {
+            
             if(infix[i] == '(')
             {
                 push(infix[i]);
@@ -51,9 +52,9 @@ int main()
                     {
                         postfix[++j] = ch;
                     }
-                    
                 }
             }
+
             if(infix[i] == '+' || infix[i] == '-' || infix[i] == '*' || infix[i] == '/')
             {
                 char y;

@@ -209,23 +209,112 @@ void search(int target)
 	return;
 }
 
+void reverse(){
+    struct node *t1, *t2, *temp;
+    t1 = t2 = NULL;
+    if (list == NULL){
+        printf("List is empty");
+    } else {
+        while (list != NULL) {
+            t2 = list->next;
+            list->next = t1;
+            t1 = list;
+            list = t2;
+        }
+        list = t1;
+        temp = list;
+        printf("Reversed linked list is : ");
+        while (temp != NULL) {
+            printf("%d ", temp->info);
+            temp = temp->next;
+        }
+        printf("\n");
+
+    }
+}
 
 int main()
 {
-	display();
-	insertbeg(3);
-	insertbeg(5);
-	insertbeg(2);
-	search(5);
-	display();
-	insertend(1);
-	display();
-	insert(2,8);
-	display();
-	delete(2);
-	display();
-	get_length();
-	search(10);
-
+	int choice, n, pos;
+	while(1)
+	{
+		printf("---ADT Menu---\n");
+		printf("1. INSERT AT BEGINNING\n");
+		printf("2. INSERT AT END\n");
+		printf("3. INSERT AT LOCATION\n");
+		printf("4. DELETE AT BEGINENNING\n");
+		printf("5. DELETE AT END\n");
+		printf("6. DELETE AT LOCATION\n");
+		printf("7. DISPLAY\n");
+		printf("8. SEARCH\n");
+		printf("9. COUNT\n");
+		printf("10. COPY\n");
+		printf("11. CONCATENATE\n");
+		printf("12. SPLIT\n");
+		printf("13. REVERSE\n");
+		printf("14. EXIT\n");
+		printf("Enter your choice : ");
+		scanf("%d", &choice);
+		switch(choice) 
+		{
+			case 1:
+				printf("Enter a Number : ");
+				scanf("%d", n);
+				insertbeg(n);
+				break;
+			case 2:
+				printf("Enter a Number : ");
+				scanf("%d", &n);
+				insertend(n);
+				break;
+			case 3:
+				printf("Enter a Number : ");
+				scanf("%d", &n);
+				printf("Enter a position : ");
+				scanf("%d", &pos);
+				insert(pos, n);
+				break;
+			case 4:
+				deletebeg();
+				break;
+			case 5:
+				deleteend();
+				break;
+			case 6:
+				printf("Enter a position : ");
+				scanf("%d", &pos);
+				delete(pos);
+				break;
+			case 7:
+				display();
+				break;
+			case 8:
+				printf("Enter a Number to search : ");
+				scanf("%d", &n);
+				search(n);
+				break;
+			case 9:
+				get_length();
+				break;
+			case 10:
+				// copy()
+				break;
+			case 11:
+				// concat()
+				break;
+			case 12:
+				// split()
+				break;
+			case 13:
+				reverse();
+				break;
+			case 14:
+				exit(0);
+				break;
+			default:
+				printf("Invalid Choice! Try Again\n");
+			
+		}
+	}
 	return 0;
 }

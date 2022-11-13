@@ -47,6 +47,7 @@ int main()
 {
     char text[30], revtext[30];
     int i, len;
+    
     printf("Enter a text : ");
     scanf("%s", text);
     len = strlen(text);

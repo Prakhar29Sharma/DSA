@@ -9,7 +9,7 @@ void push(int);
 int pop();
 int eval(char exp[]);
 
-int main()
+int main() 
 {
     char exp[100];
     printf("Enter a PostFix Expression : ");
